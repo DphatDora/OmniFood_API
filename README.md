@@ -1,101 +1,116 @@
-# 🍔 **OmniFoodAPI – Hệ thống đặt đồ ăn nhanh**
+# 🍔 **OmniFoodAPI - Fast Food Ordering System**
 
-**OmniFoodAPI** là hệ thống **RESTful API** hỗ trợ người dùng đặt món ăn trực tuyến, tích hợp **thanh toán VNPAY**, **thông báo đẩy trên Android (FCM)**, và đầy đủ chức năng quản lý đơn hàng, tài khoản cá nhân, giỏ hàng và trạng thái vận chuyển.
-
----
-
-## 📌 **Danh sách chức năng**
-
-### **2.1. 🔐 Đăng nhập**
-- Cho phép người dùng đăng nhập bằng **email và mật khẩu** (mã hóa SHA512)
-- Hỗ trợ đăng nhập bằng **Google**
-
-### **2.2. 📝 Đăng ký**
-- Người dùng tạo tài khoản với các thông tin cơ bản: **tên, email/số điện thoại, mật khẩu**
-- Xác thực bằng **OTP**
-
-### **2.3. 🔁 Quên mật khẩu**
-- Gửi **mã OTP** về email để khôi phục mật khẩu
-- Xác minh và cập nhật mật khẩu mới
-
-### **2.4. 🍱 Quản lý sản phẩm (Xem, Thêm giỏ hàng, Yêu thích)**
-- Hiển thị danh sách sản phẩm theo loại, chi tiết sản phẩm  
-- Thêm/xoá món ăn khỏi **giỏ hàng** và **danh sách yêu thích**
-
-### **2.5. 🛒 Đặt hàng**
-- Tạo đơn hàng từ giỏ hàng  
-- Lưu **lịch sử đơn hàng**
-
-### **2.6. 💳 Thanh toán bằng VNPAY**
-- Tích hợp **cổng thanh toán VNPAY**
-- Tự động cập nhật **trạng thái thanh toán** sau phản hồi từ VNPAY
-
-### **2.7. 📦 Theo dõi trạng thái đơn hàng**
-- Cập nhật trạng thái:  
-  `Đang xử lý → Đang giao → Hoàn tất → Đã hủy`  
-- Người dùng có thể xem trạng thái **theo thời gian thực**
-
-### **2.8. 🔔 Gửi nhận thông báo Android**
-- Sử dụng **Firebase Cloud Messaging (FCM)**  
-- Gửi thông báo khi:
-  - Đơn hàng được tạo
-  - Trạng thái đơn hàng thay đổi
-  - Có khuyến mãi mới
-
-### **2.9. 🙍‍♂️ Quản lý thông tin cá nhân**
-- Xem và chỉnh sửa thông tin tài khoản  
-- Đổi mật khẩu  
-- Cập nhật ảnh đại diện
+**OmniFoodAPI** is a **RESTful API** system that supports online food ordering, integrating **VNPAY payment**, **Android push notifications (FCM)**, and comprehensive features for order management, personal accounts, shopping cart, and delivery status tracking.
 
 ---
 
-## 🛠 **Công nghệ sử dụng**
+## 📌 **Feature List**
 
-- **Backend**: Spring Boot (Java)  
-- **Database**: MySQL  
-- **ORM**: Spring Data JPA  
-- **Xác thực**: Spring Security + JWT + SHA512  
-- **Thanh toán**: VNPAY REST API  
-- **Thông báo**: Firebase Cloud Messaging (FCM)  
+### **2.1. 🔐 Login**
+
+- Allows users to login with **email and password** (SHA512 encryption)
+- Supports **Google** login
+
+### **2.2. 📝 Registration**
+
+- Users create accounts with basic information: **name, email/phone number, password**
+- **OTP** verification
+
+### **2.3. 🔁 Password Recovery**
+
+- Send **OTP code** to email for password recovery
+- Verify and update new password
+
+### **2.4. 🍱 Product Management (View, Cart, Favorites)**
+
+- Display product list by category, product details
+- Add/remove items from **shopping cart** and **favorites list**
+
+### **2.5. 🛒 Ordering**
+
+- Create orders from shopping cart
+- Save **order history**
+
+### **2.6. 💳 VNPAY Payment**
+
+- Integrate **VNPAY payment gateway**
+- Automatic **payment status** update after VNPAY response
+
+### **2.7. 📦 Order Status Tracking**
+
+- Status updates:  
+  `Processing → Delivering → Completed → Cancelled`
+- Users can track status in **real-time**
+
+### **2.8. 🔔 Android Push Notifications**
+
+- Using **Firebase Cloud Messaging (FCM)**
+- Send notifications for:
+  - Order creation
+  - Order status changes
+  - New promotions
+
+### **2.9. 🙍‍♂️ Personal Information Management**
+
+- View and edit account information
+- Change password
+- Update profile picture
+
+---
+
+## 🛠 **Technologies Used**
+
+- **Backend**: Spring Boot (Java)
+- **Database**: MySQL
+- **ORM**: Spring Data JPA
+- **Authentication**: Spring Security + JWT + SHA512
+- **Payment**: VNPAY REST API
+- **Notifications**: Firebase Cloud Messaging (FCM)
 - **IDE**: IntelliJ IDEA
 
 ---
-## 📦 Hướng dẫn cài đặt (Local Development)
 
-### 🧾 1. Clone dự án
+## 📦 Installation Guide (Local Development)
+
+### 🧾 1. Clone the project
 
 ```bash
 git clone https://github.com/raichuvn11/AppFastFood
 ```
-### 🛠 2. Tạo cơ sở dữ liệu MySQL
-Sử dụng MySQL Workbench để khôi phục cơ sở dữ liệu từ file [db_fastfood.sql](https://github.com/raichuvn11/AppFastFood/blob/main/db_fastfood.sql) có sẵn trong thư mục dự án trên GitHub.
-Các bước thực hiện:
-- **Mở MySQL Workbench và kết nối với server MySQL của bạn.**
 
-- **Tạo một cơ sở dữ liệu mới (ví dụ tên là db_fastfood)**
+### 🛠 2. Create MySQL Database
 
-- **Vào menu: Server → Data Import**
+Use MySQL Workbench to restore the database from the [db_fastfood.sql](https://github.com/raichuvn11/AppFastFood/blob/main/db_fastfood.sql) file available in the project repository on GitHub.
+Steps to follow:
 
-- **Chọn `Import from Self-Contained File` và chọn đường dẫn đến file `db_fastfood.sql`**
+- **Open MySQL Workbench and connect to your MySQL server**
+- **Create a new database (e.g., named db_fastfood)**
+- **Go to menu: Server → Data Import**
+- **Select `Import from Self-Contained File` and choose the path to `db_fastfood.sql`**
+- **Select Default Schema as your database name (e.g., db_fastfood) and click `Start Import`**
 
-- **Chọn Default Schema là tên cơ sở dữ liệu vừa tạo (ví dụ tên là db_fastfood) và bấm `Start Import`**
+### ⚙️ 3. Configure application.properties
 
-### ⚙️ 3. Cấu hình tệp application.properties
 ```properties
 # Database
 spring.datasource.url=jdbc:mysql://localhost:3306/db_fastfood
 spring.datasource.username=root
 spring.datasource.password=yourpassword
 ```
-### 🧪 4. Mở và chạy trong IntelliJ IDEA(hoặc IDE khác nếu có thể)
-### 🌐 5. Truy cập Swagger UI để dùng API
+
+### 🧪 4. Open and Run in IntelliJ IDEA (or other compatible IDEs)
+
+### 🌐 5. Access Swagger UI to use the API
+
 ```
 http://localhost:8080/swagger-ui/index.html
 ```
+
 ---
-## 👥 Thành viên thực hiện
+
+## 👥 Team Members
 
 - **Nguyễn Mạnh Tú**
 - **Hà Đức Phát**
-  
-*Đội ngũ đã phối hợp chặt chẽ để hoàn thiện hệ thống OmniFoodAPI, đảm bảo tính năng ổn định và hiệu quả.*
+
+_The team collaborated closely to complete the OmniFoodAPI system, ensuring stable and efficient functionality._
